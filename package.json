@@ -6,8 +6,7 @@
   "scripts": {
     "build": "rimraf dist && npx tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "serve": "concurrently \"npx tsc -w\"  \"nodemon dist/server.js\"",
-    "dev:serve:nodemon": "nodemon src/server"
+    "nodemon:serve": "nodemon src/server"
   },
   "author": "Beau Iyere",
   "license": "ISC",
@@ -22,7 +21,6 @@
     "@types/node": "^20.5.1",
     "@types/swagger-ui-express": "^4.1.3",
     "@types/yamljs": "^0.2.31",
-    "concurrently": "^8.2.0",
     "lodash": "^4.17.21",
     "nodemon": "^3.0.1",
     "rimraf": "^5.0.1",
