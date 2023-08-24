@@ -31,7 +31,7 @@ import dashboardRoute from "./api/routes/dashboardRoutes";
 const app: Application = express();
 const Port = process.env.PORT || 3000;
 
-app.set("trust proxy", true);
+app.set("trust proxy", 1);
 // app.enable("trust proxy");
 app.disable("x-powered-by");
 app.use(limiter);
@@ -45,6 +45,7 @@ app.use(
     secret: process.env.SESSION_SECRET_KEY!,
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: true },
   })
 );
 
