@@ -32,6 +32,7 @@ const app: Application = express();
 const Port = process.env.PORT || 3000;
 
 app.set("trust proxy", true);
+app.enable("trust proxy");
 app.disable("x-powered-by");
 app.use(limiter);
 app.use(xss());
