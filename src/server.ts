@@ -31,6 +31,7 @@ import dashboardRoute from "./api/routes/dashboardRoutes";
 const app: Application = express();
 const Port = process.env.PORT || 3000;
 
+app.set("trust proxy", true);
 app.disable("x-powered-by");
 app.use(limiter);
 app.use(xss());
