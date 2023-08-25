@@ -11,7 +11,7 @@ export const signup_a_user = asyncHandler(
         const { newUser, userToken } = await signup_user_service(req.body);
     res
       .status(StatusCodes.CREATED)
-      .json({ UserData: { userEmail: newUser.username }, token: userToken });
+      .json({ UserData: { username: newUser.username }, token: userToken });
   }
 );
 
