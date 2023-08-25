@@ -7,6 +7,7 @@ import logger from "morgan";
 import session from "express-session";
 import rateLimit from "express-rate-limit";
 import swaggerUI from "swagger-ui-express";
+import MongoStore from "connect-mongo";
 import YAML from "yamljs";
 import path from "path";
 
@@ -32,7 +33,6 @@ const app: Application = express();
 const Port = process.env.PORT || 3000;
 
 app.set("trust proxy", 1);
-// app.enable("trust proxy");
 app.disable("x-powered-by");
 app.use(limiter);
 app.use(xss());
@@ -46,6 +46,10 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true },
+    store: MongoStore.create({
+      mongoUrl: process.env.SESSION_STORAGE!,
+      ttl: 14 * 24 * 60 * 60,
+    }),
   })
 );
 
